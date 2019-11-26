@@ -19,41 +19,25 @@
 				</div>
 				<hr />
 				
-				<form th:action="@{/cita/save}" th:object="${cita}" method="post">
+				<form th:action="@{/paciente/save}" th:object="${paciente}" method="post">
 										
 					<div class="form-group row">
 						<div class="content col-sm-3">
 							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Fecha Cita:</label>						
+							<label class="h5 col-form-label">&nbsp;GRUPO SANGUINEO:</label>						
 						</div>
-					
-					<!-- Campo de entrada de hora 
-  					Selecciona la hora deseada:
-  						<input type="time" name="hora" min="18:00"
-                                 max="21:00" step="3600">
-                                 -->
-						
 						<div class="content col-sm-6">							
-							<input class="form-control" type="date" 
-								th:field="*{fechaHora}"
-								th:errorclass="'form-control is-invalid'" />	
-								<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('fechaHora')}"
-								th:errors="*{fechaHora}"
-								></small>									
-						</div>
+							 
+							<textarea class ="form-control"
+								th:field="*{gruposanguineo}"
+								th:errorclass="'form-control is-invalid'" ></textarea>	
+						<small class="invalid-feedback"
+								th:if="${#fields.hasErrors('gruposanguineo')}"
+								th:errors="*{gruposanguineo}"></small>
 					</div>
+				</div>
 					
-					<div class="form-group row">
-								<i class="fas fa-info-circle"></i>
-								<label class="h5 col-form-label">&nbsp;Region:</label>		
-								  <select class="form-control" id="sel1">
-								    <option></option>
-								    <option></option>
-								    <option></option>
-								    <option></option>
-								  </select>
-						    </div>
+					
 				
 					
 										
@@ -61,14 +45,14 @@
 					<div class="form-group row">
 						<div class="col-sm-4">
 							<a class="btn btn-danger" 
-								th:href="@{/cita/list}">
+								th:href="@{/paciente/list}">
 							<i class="fas fa-minus-circle"></i>&nbsp;Cancelar</a>
 							<button class="btn btn-success" type="submit">
 								<i class="fas fa-plus-circle"></i>&nbsp;Guardar
 							</button>
 						</div>
 					</div>
-					<input type="hidden" th:field="*{idcita}" />
+					<input type="hidden" th:field="*{idpersona}" />
 							
 				
 				</form>
