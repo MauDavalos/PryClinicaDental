@@ -25,7 +25,7 @@ public class PacienteController {
 	public String create(Model model) {
 		
 		Paciente paciente = new Paciente();
-		model.addAttribute("tipoEnfermedad", paciente);
+		model.addAttribute("paciente", paciente);
 		model.addAttribute("title", "Registro de nuevo paciente");
 		
 		return "paciente/form";

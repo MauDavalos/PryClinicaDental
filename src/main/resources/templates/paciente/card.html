@@ -17,16 +17,16 @@
 						<i class="fas fa-info-circle"></i>
 					</div>
 					<h3 class="card-title col-sm-6"
-						th:text="${cita.fechaHora}"></h3>
+						th:text="${paciente.nombres } +' '+ ${paciente.apellidos}"></h3>
 					<div class="col-sm-4">
 						<button class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
 						<i class="fas fa-info-circle"></i>&nbsp;Eliminar</button>
-						<a class="btn btn-primary" th:href="@{/area/list}"><i
+						<a class="btn btn-primary" th:href="@{/paciente/list}"><i
 							class="fas fa-arrow-left"></i>&nbsp;Volver</a>
 					</div>
 				</div>
-				<input type="hidden" id="idcita"
-					th:value="${cita.idcita}" />
+				<input type="hidden" id="idpersona"
+					th:value="${paciente.idpersona}" />
 				<hr />
 				
 			</div>
@@ -42,11 +42,11 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<p th:text=${cita.fechaHora}></p>
+						<p th:text="${paciente.nombres} +' '+ ${paciente.apellidos}" ></p>
 					</div>
 					<div class="modal-footer">						
 						<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-						<a th:href="@{/cita/delete/} + ${cita.idcita}" class="btn btn-success">Confirmar</a>
+						<a th:href="@{/paciente/delete/} + ${paciente.idpersona}" class="btn btn-success">Confirmar</a>
 					</div>
 				</div>
 			</div>

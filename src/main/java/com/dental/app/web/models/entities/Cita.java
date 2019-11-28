@@ -34,8 +34,9 @@ public class Cita implements Serializable{
 	@Column(name="IDCITA")
 	private Integer idcita;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@DateTimeFormat(pattern = "yyyy-MM-dd-HH-mm")
+	/*@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd-HH-mm")*/
+	@Temporal(TemporalType.DATE)
 	@Column(name="FECHAHORA")
 	private Calendar fechaHora;
 	

@@ -22,25 +22,27 @@
 					<thead>
 						<tr>
 							<th><i class="fas fa-info-circle"></i>&nbsp;Nombre</th>
+							<th><i class="fas fa-info-circle"></i>&nbsp;Cedula</th>
 							
 
-							<th><a class="btn btn-sm btn-success" th:href="@{/cita/create}" >
+							<th><a class="btn btn-sm btn-success" th:href="@{/paciente/create}" >
 								<i class="fas fa-plus"></i>&nbsp;Nuevo</a>
 							</th>
 						</tr>
 					</thead>
 					<tbody>						
-						<tr th:each="cita : ${citaList}" >
-							<td th:text="${cita.fechaHora}"></td>
+						<tr th:each="paciente : ${list}" >
+							<td th:text="${paciente.nombres}"></td>
+							<td th:text="${paciente.cedula}"></td>
 							
 							<td>
 								<div class="row">
 									<a class="btn btn-sm btn-warning" title="Editar"
-									   th:href="@{/cita/update/} + ${cita.idcita}">
+									   th:href="@{/paciente/update/} + ${paciente.idpersona}">
 										<i class="fas fa-edit"></i>
 									</a>
 									<a class="btn btn-sm btn-primary" title="Ver"
-									   th:href="@{/cita/retrieve/} + ${cita.idcita}">
+									   th:href="@{/paciente/retrieve/} + ${paciente.idpersona}">
 										<i class="fas fa-eye"></i>
 									</a>									
 								</div>

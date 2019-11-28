@@ -27,19 +27,15 @@
 							<label class="h5 col-form-label">&nbsp;Fecha Cita:</label>						
 						</div>
 					
-					<!-- Campo de entrada de hora 
-  					Selecciona la hora deseada:
-  						<input type="time" name="hora" min="18:00"
-                                 max="21:00" step="3600">
-                                 -->
+					
 						
 						<div class="content col-sm-6">							
-							<input class="form-control" type="date" 
-								th:field="*{fechaHora}"
+							<input class="form-control" type="text" 
+								th:field="*{fechaCita}"
 								th:errorclass="'form-control is-invalid'" />	
 								<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('fechaHora')}"
-								th:errors="*{fechaHora}"
+								th:if="${#fields.hasErrors('fechaCita')}"
+								th:errors="*{fechaCita}"
 								></small>									
 						</div>
 					</div>
