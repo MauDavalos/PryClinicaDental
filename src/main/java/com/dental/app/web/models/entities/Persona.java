@@ -10,7 +10,9 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,33 +27,46 @@ public abstract class Persona {
 	private Integer idpersona;
 	
 	@Column(name="NOMBRES")
-	@Size(max=200)
+	@Size(max=60)
+	@Pattern(regexp = "[A-Za-z]+", message="El nombre solo puede tener letras")
+	@NotEmpty
 	private String nombres;
 	
 	@Column(name="APELLIDOS")
-	@Size(max=200)
+	@Size(max=60)
+	@Pattern(regexp = "[A-Za-z]+")
+	@NotEmpty
 	private String apellidos;
 	
 	@Column(name="CEDULA")
-	@Size(max=20)
+	@Size(min=10, max=45)
+	@Pattern(regexp = "[0-9]+")
+	@NotEmpty
 	private String cedula;
 	
 	@Column(name="TELEFONO")
-	@Size(max=20)
+	
+	@Size(min=10,max=20, message="El numero de telefono es incorrecto")
+	@Pattern(regexp = "[0-9+]+")
+	@NotEmpty
 	private String telefono;
 	
 	@Column(name="DIRECCION")
 	@Size(max=255)
+	@NotEmpty
 	private String direccion;
 		
 	@Column(name="SEXO")
-	@Size(max=1)
+	@Size(max=1,message="Solo debes colocar una letra, M para masculino y F para Femenino")
+	@Pattern(regexp = "[mMfF]+")
+	@NotEmpty
 	private String sexo;
 	
 	@Temporal(TemporalType.DATE)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	@Past
 	@Column(name="NACIMIENTO")
+	
 	private Calendar nacimiento;
 	
 	/////////////////////////////////////

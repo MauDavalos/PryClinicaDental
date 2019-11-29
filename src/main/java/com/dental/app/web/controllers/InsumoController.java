@@ -44,9 +44,9 @@ public class InsumoController {
 	public String update(@PathVariable(value="id") Integer id, Model model) {
 		
 		Insumo insumo = service.findById(id);
-		model.addAttribute("tipoE", insumo);
-		model.addAttribute("title", "Actualizando el registro de " + insumo.getNombreMedicina());
 		
+		model.addAttribute("title", "Actualizando el registro de " + insumo.getNombreMedicina());
+		model.addAttribute("insumo", insumo);
 		return "insumo/form";
 	}
 	

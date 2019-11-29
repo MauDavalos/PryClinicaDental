@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
@@ -20,7 +21,8 @@ public class Paciente extends Persona implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Column(name="GRUPOSANGUINEO")
-	@Size(max=15)
+	@Size(max=5)
+	@NotEmpty
 	private String gruposanguineo;
 	
 	
