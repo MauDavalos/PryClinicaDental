@@ -19,7 +19,7 @@
 				</div>
 				<hr />
 				
-				<form th:action="@{/paciente/save}" th:object="${paciente}" method="post">
+				<form th:action="@{/doctor/save}" th:object="${doctor}" method="post">
 						
 						
 						
@@ -30,7 +30,7 @@
 						</div>
 							<div class="content col-sm-6">							
 							 
-							<input type="text" class ="form-control"
+							<textarea class ="form-control"
 								th:field="*{nombres}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
@@ -147,34 +147,28 @@
 					</div>
 				</div>
 				<hr/>
+				
 				<div class="form-group row">
 						<div class="content col-sm-3">
-						<i class="fas fa-file-medical"></i>
-							<label class="h5 col-form-label">&nbsp;GRUPO SANGUINEO:</label>						
+						<i class="fas fa-calendar-minus"></i>
+							<label class="h5 col-form-label">&nbsp;ESPECIALIDAD:</label>						
 						</div>
-							<div class="content col-sm-6">							
+						<div class="content col-sm-6">							
 							 
-							<textarea class ="form-control"
-								th:field="*{gruposanguineo}"
-								th:errorclass="'form-control is-invalid'" ></textarea>	
+							<input class ="form-control" 
+								th:field="*{especialidad}"
+								th:errorclass="'form-control is-invalid'" ></input>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('gruposanguineo')}"
-								th:errors="*{gruposanguineo}">
-						</small>
-							</div>				
-						
-						
-						</div>
-						
-					
+								th:if="${#fields.hasErrors('especialidad')}"
+								th:errors="*{especialidad}"></small>
+					</div>
+				</div>
+				<hr/>
 				
-					
-										
-					<hr />
 					<div class="form-group row">
 						<div class="col-sm-4">
 							<a class="btn btn-danger" 
-								th:href="@{/paciente/list}">
+								th:href="@{/doctor/list}">
 							<i class="fas fa-minus-circle"></i>&nbsp;Cancelar</a>
 							<button class="btn btn-success" type="submit">
 								<i class="fas fa-plus-circle"></i>&nbsp;Guardar

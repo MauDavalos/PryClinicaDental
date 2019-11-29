@@ -19,23 +19,23 @@
 				</div>
 				<hr />
 				
-				<form th:action="@{/paciente/save}" th:object="${paciente}" method="post">
+				<form th:action="@{/prescripcion/save}" th:object="${prescripcion}" method="post">
 						
 						
 						
 					<div class="form-group row">
 						<div class="content col-sm-3">
 							<i class="fas fa-user-alt"></i>
-							<label class="h5 col-form-label">&nbsp;NOMBRES:</label>						
+							<label class="h5 col-form-label">&nbsp;NOMBRE GENERICO:</label>						
 						</div>
 							<div class="content col-sm-6">							
 							 
-							<input type="text" class ="form-control"
-								th:field="*{nombres}"
+							<textarea class ="form-control"
+								th:field="*{nombreGenerico}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('nombres')}"
-								th:errors="*{nombres}">
+								th:if="${#fields.hasErrors('nombreGenerico')}"
+								th:errors="*{nombreGenerico}">
 						</small>
 							</div>				
 						
@@ -46,32 +46,32 @@
 						<div class="form-group row">
 						<div class="content col-sm-3">
 							<i class="fas fa-user-alt"></i>
-							<label class="h5 col-form-label">&nbsp;APELLIDOS:</label>						
+							<label class="h5 col-form-label">&nbsp;NOMBRE COMERCIAL:</label>						
 						</div>
 						<div class="content col-sm-6">							
 							 
 							<textarea class ="form-control"
-								th:field="*{apellidos}"
+								th:field="*{nombreComercial}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('apellidos')}"
-								th:errors="*{apellidos}"></small>
+								th:if="${#fields.hasErrors('nombreComercial')}"
+								th:errors="*{nombreComercial}"></small>
 					</div>
 				</div>
 				
 				<div class="form-group row">
 						<div class="content col-sm-3">
 						<i class="fas fa-address-card"></i>
-							<label class="h5 col-form-label">&nbsp;CEDULA:</label>						
+							<label class="h5 col-form-label">&nbsp;COMPONENTE ACTIVO:</label>						
 						</div>
 							<div class="content col-sm-6">							
 							 
 							<textarea class ="form-control"
-								th:field="*{cedula}"
+								th:field="*{componenteActivo}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('cedula')}"
-								th:errors="*{cedula}">
+								th:if="${#fields.hasErrors('componenteActivo')}"
+								th:errors="*{componenteActivo}">
 						</small>
 							</div>				
 						
@@ -82,89 +82,35 @@
 						<div class="form-group row">
 						<div class="content col-sm-3">
 						<i class="fas fa-mobile-alt"></i>
-							<label class="h5 col-form-label">&nbsp;TEL&Eacute;FONO:</label>						
+							<label class="h5 col-form-label">&nbsp;DOSIS:</label>						
 						</div>
 						<div class="content col-sm-6">							
 							 
 							<textarea class ="form-control"
-								th:field="*{telefono}"
+								th:field="*{dosis}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('telefono')}"
-								th:errors="*{telefono}"></small>
+								th:if="${#fields.hasErrors('dosis')}"
+								th:errors="*{dosis}"></small>
 					</div>
 				</div>
 					
 					<div class="form-group row">
 						<div class="content col-sm-3">
 						<i class="fas fa-map-marked-alt"></i>	
-							<label class="h5 col-form-label">&nbsp;DIRECCI&Oacute;N:</label>						
+							<label class="h5 col-form-label">&nbsp;INDICACIONES:</label>						
 						</div>
 							<div class="content col-sm-6">							
 							 
 							<textarea class ="form-control"
-								th:field="*{direccion}"
+								th:field="*{indicaciones}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('direccion')}"
-								th:errors="*{direccion}">
+								th:if="${#fields.hasErrors('indicaciones')}"
+								th:errors="*{indicaciones}">
 						</small>
 							</div>				
-						
-						
-						</div>
-						
-						<hr/>
-						<div class="form-group row">
-						<div class="content col-sm-3">
-						<i class="fas fa-restroom"></i>
-							
-							<label class="h5 col-form-label">&nbsp;SEXO:</label>						
-						</div>
-						<div class="content col-sm-6">							
-							 
-							<textarea class ="form-control"
-								th:field="*{sexo}"
-								th:errorclass="'form-control is-invalid'" ></textarea>	
-						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('sexo')}"
-								th:errors="*{sexo}"></small>
-					</div>
-				</div>
-				<div class="form-group row">
-						<div class="content col-sm-3">
-						<i class="fas fa-calendar-minus"></i>
-							<label class="h5 col-form-label">&nbsp;FECHA DE NACIMIENTO:</label>						
-						</div>
-						<div class="content col-sm-6">							
-							 
-							<input class ="form-control" type = "date"
-								th:field="*{nacimiento}"
-								th:errorclass="'form-control is-invalid'" ></input>	
-						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('nacimiento')}"
-								th:errors="*{nacimiento}"></small>
-					</div>
-				</div>
-				<hr/>
-				<div class="form-group row">
-						<div class="content col-sm-3">
-						<i class="fas fa-file-medical"></i>
-							<label class="h5 col-form-label">&nbsp;GRUPO SANGUINEO:</label>						
-						</div>
-							<div class="content col-sm-6">							
-							 
-							<textarea class ="form-control"
-								th:field="*{gruposanguineo}"
-								th:errorclass="'form-control is-invalid'" ></textarea>	
-						<small class="invalid-feedback"
-								th:if="${#fields.hasErrors('gruposanguineo')}"
-								th:errors="*{gruposanguineo}">
-						</small>
-							</div>				
-						
-						
-						</div>
+						</div>	
 						
 					
 				
@@ -174,14 +120,14 @@
 					<div class="form-group row">
 						<div class="col-sm-4">
 							<a class="btn btn-danger" 
-								th:href="@{/paciente/list}">
+								th:href="@{/prescripcion/list}">
 							<i class="fas fa-minus-circle"></i>&nbsp;Cancelar</a>
 							<button class="btn btn-success" type="submit">
 								<i class="fas fa-plus-circle"></i>&nbsp;Guardar
 							</button>
 						</div>
 					</div>
-					<input type="hidden" th:field="*{idpersona}" />
+					<input type="hidden" th:field="*{idprescripcion}" />
 							
 				
 				</form>

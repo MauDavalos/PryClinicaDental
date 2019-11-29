@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.dental.app.web.models.entities.Prescripcion;
 import com.dental.app.web.models.service.IPrescripcionService;
 
+
 @Controller
 @RequestMapping(value="/prescripcion")
 public class PrescripcionController {
@@ -25,9 +26,9 @@ public class PrescripcionController {
 	public String create(Model model) {
 		
 		Prescripcion prescripcion = new Prescripcion();
-		model.addAttribute("prescripcion", prescripcion);
-		model.addAttribute("title", "Registro de nueva prescripcion");
 		
+		model.addAttribute("title", "Registro de nueva prescripcion");
+		model.addAttribute("prescripcion", prescripcion);
 		return "prescripcion/form";
 	}
 	
@@ -43,13 +44,13 @@ public class PrescripcionController {
 	
 	@GetMapping(value="/update/{id}")
 	public String update(@PathVariable(value="id") Integer id, Model model) {
-		
 		Prescripcion prescripcion = service.findById(id);
+		model.addAttribute("title", "Actualizando el registro");
 		model.addAttribute("prescripcion", prescripcion);
-		model.addAttribute("title", "Actualizando el registro de " + prescripcion.getNombreComercial());
-		
-		return "prescripcion/form";
-	}
+		return "prescripcion/form";		
+	} 
+
+
 	
 	@GetMapping(value="/delete/{id}")
 	public String delete(@PathVariable(value="id") Integer id, Model model, RedirectAttributes flash) {

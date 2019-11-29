@@ -21,30 +21,30 @@
 				<table class="table table-hover">
 					<thead>
 						<tr>
-							<th><i class="fas fa-info-circle"></i>&nbsp;Apellidos</th>
-							<th><i class="fas fa-info-circle"></i>&nbsp;Nombres</th>
-							<th><i class="fas fa-info-circle"></i>&nbsp;C&eacute;dula</th>
+							<th><i class="fas fa-info-circle"></i>&nbsp;nombreComercial</th>
+
+							<th><i class="fas fa-info-circle"></i>&nbsp;nombreComercial</th>
 							
 
-							<th><a class="btn btn-sm btn-success" th:href="@{/paciente/create}" >
+							<th><a class="btn btn-sm btn-success" th:href="@{/prescripcion/create}" >
 								<i class="fas fa-plus"></i>&nbsp;Nuevo</a>
 							</th>
 						</tr>
 					</thead>
 					<tbody>						
-						<tr th:each="paciente : ${list}" >
-							<td th:text="${paciente.apellidos}"></td>
-							<td th:text="${paciente.nombres}"></td>
-							<td th:text="${paciente.cedula}"></td>
+						<tr th:each="prescripcion : ${list}" >
+							<td th:text="${prescripcion.nombreGenerico}"></td>
+							
+							<td th:text="${prescripcion.nombreComercial}"></td>
 							
 							<td>
 								<div class="row">
 									<a class="btn btn-sm btn-warning" title="Editar"
-									   th:href="@{/paciente/update/} + ${paciente.idpersona}">
+									   th:href="@{/prescripcion/update/} + ${prescripcion.idprescripcion}">
 										<i class="fas fa-edit"></i>
 									</a>
 									<a class="btn btn-sm btn-primary" title="Ver"
-									   th:href="@{/paciente/retrieve/} + ${paciente.idpersona}">
+									   th:href="@{/prescripcion/retrieve/} + ${prescripcion.idprescripcion}">
 										<i class="fas fa-eye"></i>
 									</a>									
 								</div>

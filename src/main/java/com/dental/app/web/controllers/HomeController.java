@@ -11,8 +11,8 @@ public class HomeController {
 	
 	@GetMapping(value="/")
 	public String home(Model model) {
-		model.addAttribute("title", "SGFM");
-		model.addAttribute("description", "Sistema Ficha Medica");
+		model.addAttribute("title", "Dental Pro ®");
+		model.addAttribute("description", "Sistema de Clínica Dental");
 		return "home";
 	}
 	

@@ -26,25 +26,25 @@
 							<th><i class="fas fa-info-circle"></i>&nbsp;C&eacute;dula</th>
 							
 
-							<th><a class="btn btn-sm btn-success" th:href="@{/paciente/create}" >
+							<th><a class="btn btn-sm btn-success" th:href="@{/doctor/create}" >
 								<i class="fas fa-plus"></i>&nbsp;Nuevo</a>
 							</th>
 						</tr>
 					</thead>
 					<tbody>						
-						<tr th:each="paciente : ${list}" >
-							<td th:text="${paciente.apellidos}"></td>
-							<td th:text="${paciente.nombres}"></td>
-							<td th:text="${paciente.cedula}"></td>
+						<tr th:each="doctor : ${list}" >
+							<td th:text="${doctor.apellidos}"></td>
+							<td th:text="${doctor.nombres}"></td>
+							<td th:text="${doctor.cedula}"></td>
 							
 							<td>
 								<div class="row">
 									<a class="btn btn-sm btn-warning" title="Editar"
-									   th:href="@{/paciente/update/} + ${paciente.idpersona}">
+									   th:href="@{/doctor/update/} + ${doctor.idpersona}">
 										<i class="fas fa-edit"></i>
 									</a>
 									<a class="btn btn-sm btn-primary" title="Ver"
-									   th:href="@{/paciente/retrieve/} + ${paciente.idpersona}">
+									   th:href="@{/doctor/retrieve/} + ${doctor.idpersona}">
 										<i class="fas fa-eye"></i>
 									</a>									
 								</div>
