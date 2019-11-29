@@ -15,7 +15,8 @@
 					<div class="content col-sm-1">
 						<i class="far fa-plus-square fa-2x"></i>
 					</div>
-					<h3 class="card-title col-sm-10" th:text="${title}"></h3>					
+					<h3 class="card-title col-sm-10" th:text="${title}"></h3>	
+									
 				</div>
 				<hr />
 				
@@ -123,12 +124,24 @@
 						</div>
 						<div class="content col-sm-6">							
 							 
-							<textarea class ="form-control"
+							 <select class="btn btn-info btn-lg"
+							 th:field="*{sexo}"
+								th:errorclass="'form-control is-invalid'">
+								
+							<option value="s">--Seleccione--</option>
+							<option value="M">Masculino</option>
+							<option value="F">Femenino</option>
+							</select>
+							 <small class="invalid-feedback"
+								th:if="${#fields.hasErrors('sexo')}"
+								th:errors="*{sexo}"></small>
+						<!-- <textarea class ="form-control"
 								th:field="*{sexo}"
 								th:errorclass="'form-control is-invalid'" ></textarea>	
 						<small class="invalid-feedback"
 								th:if="${#fields.hasErrors('sexo')}"
-								th:errors="*{sexo}"></small>
+								th:errors="*{sexo}"></small> -->	 
+							
 					</div>
 				</div>
 				<div class="form-group row">

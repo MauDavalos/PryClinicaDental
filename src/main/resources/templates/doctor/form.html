@@ -123,10 +123,15 @@
 						</div>
 						<div class="content col-sm-6">							
 							 
-							<textarea class ="form-control"
-								th:field="*{sexo}"
-								th:errorclass="'form-control is-invalid'" ></textarea>	
-						<small class="invalid-feedback"
+							 <select class="btn btn-info btn-lg"
+							 th:field="*{sexo}"
+								th:errorclass="'form-control is-invalid'">
+								
+							<option value="s">--Seleccione--</option>
+							<option value="M">Masculino</option>
+							<option value="F">Femenino</option>
+							</select>
+							 <small class="invalid-feedback"
 								th:if="${#fields.hasErrors('sexo')}"
 								th:errors="*{sexo}"></small>
 					</div>

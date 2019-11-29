@@ -2,9 +2,12 @@ package com.dental.app.web.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -79,9 +82,22 @@ public class DoctorController {
 	}
 	
 	@PostMapping(value="/save")
-	public String save(Doctor doctor, Model model, RedirectAttributes flash) {
+	public String save(@Valid Doctor doctor,BindingResult result, Model model,
+			RedirectAttributes flash) {
 		
 		try {
+			if(result.hasErrors())
+			{
+				if(doctor.getIdpersona() == null) {
+					model.addAttribute("tittle","Registro de un nuevo Paciente");					
+				}
+				else {
+					model.addAttribute("tittle","Actualizando el registro de " 
+							+ doctor.getNombres());
+				}
+				
+				return"doctor/form";
+			}
 			service.save(doctor);
 			flash.addFlashAttribute("success", "Registro guardado con éxito");
 			

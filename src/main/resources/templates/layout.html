@@ -21,30 +21,20 @@
 			
 			<div class="collapse navbar-collapse">
 				<ul class="navbar-nav mr-auto">
+				
+				
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/paciente/list}">Paciente</a></li>
-					
-			</div>
 			
-			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/doctor/list}">Doctor</a></li>
-					
-			</div>
 			
-			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/prescripcion/list}">Prescripci&oacute;n</a></li>
 					
-			</div>
-			
-			<div class="collapse navbar-collapse">
-				<ul class="navbar-nav mr-auto">
 					<li class="nav-item"><a class="nav-link"
 						th:href="@{/insumo/list}">Insumo</a></li>
-					
+				</ul>	
 			</div>
 	</nav>
 				
@@ -53,8 +43,13 @@
 			<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
 			<span th:text=${success}></span>
 		</div>
-		<div id="error-alert" class="alert alert-error" role="alert" th:if="${error != null}"
-			th:text=${error}></div>
+		
+		<div id="error-alert" class="alert alert-danger" role="alert"
+		 th:if="${error != null}">
+		 <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+			<span th:text=${error}></span>
+			
+			</div>
 		<div id="warning-alert" class="alert alert-warning" role="alert"
 			th:if="${warning != null}" th:text=${warning}></div>
 		<div id="info-alert" class="alert alert-info" role="alert" th:if="${info != null}"

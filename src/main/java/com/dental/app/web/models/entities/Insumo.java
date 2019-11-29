@@ -12,8 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
-
-
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 
@@ -33,18 +32,22 @@ public class Insumo implements Serializable{
 	
 	@Column(name="NOMBREMEDICINA")
 	@Size(max=200)
+	@NotEmpty
 	private String nombreMedicina;
 	
 	@Column(name="CANTIDADMEDICINA")
 	@Size(max=150)
+	@NotEmpty
 	private String cantidadMedicina;
 	
 	@Column(name="MATERIAL")
 	@Size(max=200)
+	@NotEmpty
 	private String material;
 	
 	@Column(name="OBSERVACIONES")
 	@Size(max=255)
+	@NotEmpty
 	private String observaciones;
 	
 	@Column(name="COSTO",precision=8, scale=2)
