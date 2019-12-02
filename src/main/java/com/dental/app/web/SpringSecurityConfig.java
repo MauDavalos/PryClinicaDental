@@ -26,7 +26,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		return new BCryptPasswordEncoder();
 		
 	}
-	@Autowired
+	
 	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
 		
 		PasswordEncoder encoder = passwordEncoder();
@@ -37,7 +37,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.withUser(users.username("mau").password("123").roles("USER"));
 	}
 	
-	@Override
+	/*@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 		.antMatchers("/","/css/**","/js/**","images/**").permitAll()
@@ -52,13 +52,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
 		.and()
 			.logout().permitAll()
 		.and()
-			.exceptionHandling().accessDeniedPage("/error_403")
-		.and()
-			.csrf().ignoringAntMatchers("/h2-console/**")
-		.and()
-			.headers().frameOptions().sameOrigin();
-	
-	}
-	
+			.exceptionHandling().accessDeniedPage("/error_403");
+	}*/
 
 }
