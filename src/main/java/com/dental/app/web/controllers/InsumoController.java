@@ -2,9 +2,12 @@ package com.dental.app.web.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,9 +47,9 @@ public class InsumoController {
 	public String update(@PathVariable(value="id") Integer id, Model model) {
 		
 		Insumo insumo = service.findById(id);
-		model.addAttribute("tipoE", insumo);
-		model.addAttribute("title", "Actualizando el registro de " + insumo.getNombreMedicina());
 		
+		model.addAttribute("title", "Actualizando el registro de " + insumo.getNombreMedicina());
+		model.addAttribute("insumo", insumo);
 		return "insumo/form";
 	}
 	
@@ -79,9 +82,22 @@ public class InsumoController {
 	}
 	
 	@PostMapping(value="/save")
-	public String save(Insumo insumo, Model model, RedirectAttributes flash) {
+	public String save(@Valid Insumo insumo,BindingResult result, Model model,
+			RedirectAttributes flash) {
 		
 		try {
+			if(result.hasErrors())
+			{
+				if(insumo.getIdinsumo() == null) {
+					model.addAttribute("tittle","Registro de un nuevo Paciente");					
+				}
+				else {
+					model.addAttribute("tittle","Actualizando el registro de " 
+							+ insumo.getNombreMedicina());
+				}
+				
+				return"insumo/form";
+			}
 			service.save(insumo);
 			flash.addFlashAttribute("success", "Registro guardado con éxito");
 			

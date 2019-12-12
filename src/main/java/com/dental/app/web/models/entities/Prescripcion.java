@@ -31,15 +31,15 @@ public class Prescripcion implements Serializable{
 	private Integer idprescripcion;
 	
 	@Column(name="NOMBREGENERICO")
-	@Size(max=100)
+	@Size(max=60)
 	private String nombreGenerico;
 	
 	@Column(name="NOMBRECOMERCIAL")
-	@Size(max=100)
+	@Size(max=60)
 	private String nombreComercial;
 	
 	@Column(name="COMPONENTEACTIVO")
-	@Size(max=100)
+	@Size(max=60)
 	private String componenteActivo;
 	
 	@Column(name="DOSIS")
