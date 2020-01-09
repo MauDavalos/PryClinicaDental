@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: head"></head>
+<body>
+
+	<header th:replace="layout :: frgHeader"></header>
+
+	<div class="slider_area">
+		<div class="slider_active owl-carousel">
+			<div class="single_slider  d-flex align-items-center slider_bg_2">
+				<div class="container">
+					<div class="row">
+						<div class="col-xl-12">
+							<div class="slider_text ">
+								<div class="container">																		
+									<div class="row">										
+										<div class="card alert-danger">
+											<div class="card-header">Acceso denegado</div>
+			 								<div class="card-body">
+												<div class="card-title">
+													<h4 th:text="${#authentication.name}"></h4>
+													<span>No tiene permiso para acceder a esta p&aacute;gina</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout :: frgFooter"></footer>
+
+
+</body>
+</html>
