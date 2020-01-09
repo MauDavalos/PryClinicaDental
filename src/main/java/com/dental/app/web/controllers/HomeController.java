@@ -15,8 +15,9 @@ public class HomeController {
 	
 	@GetMapping(value="/")
 	public String home(Model model) {
-		model.addAttribute("title", "Dental Pro ®");
-		model.addAttribute("description", "Sistema de Clínica Dental");
+		model.addAttribute("framework", "Spring Boot");
+		model.addAttribute("title", "Certificación II");				
+		model.addAttribute("description", "Ejercicio práctico de la implementación de aplicaciones web con el lenguaje Java utlizando el patrón de diseño MVC y el framework Spring Boot");
 		return "home";
 	}
 	
