@@ -1,6 +1,7 @@
 package com.dental.app.web.models.entities;
 
 import java.io.Serializable;
+import java.util.Calendar;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -10,10 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 
 @Entity()
@@ -53,6 +57,22 @@ public class Insumo implements Serializable{
 	@Column(name="COSTO",precision=8, scale=2)
 	private Double costo;
 	
+	
+	//Bitácora
+		@Column(name="CREADOPOR")
+		@Size(max=35)
+		private String creadoPor;
+
+		@Column(name="CREADOEN")
+		private Calendar creadoEn;
+
+		@PrePersist
+	    public void prePersist() {
+	        creadoEn = Calendar.getInstance();
+	        SecurityContext context = SecurityContextHolder.getContext();
+	        creadoPor = context.getAuthentication().getName();
+	    }
+
 	/////////////////////
 	
 	public Insumo() {
@@ -73,12 +93,29 @@ public class Insumo implements Serializable{
 	private Cita cita;
 	
 	///////////////////
-
+	
+	
 	public Integer getIdinsumo() {
 		return idinsumo;
 	}
 
 		
+
+	public String getCreadoPor() {
+		return creadoPor;
+	}
+
+	public void setCreadoPor(String creadoPor) {
+		this.creadoPor = creadoPor;
+	}
+
+	public Calendar getCreadoEn() {
+		return creadoEn;
+	}
+
+	public void setCreadoEn(Calendar creadoEn) {
+		this.creadoEn = creadoEn;
+	}
 
 	public void setIdinsumo(Integer idinsumo) {
 		this.idinsumo = idinsumo;
