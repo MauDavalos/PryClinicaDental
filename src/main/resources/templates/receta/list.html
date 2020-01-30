@@ -3,8 +3,7 @@
 <head th:replace="layout :: frgHead"></head>
 <body>
 <div id="wrapper">
-	<div th:replace="layout :: frgNavigation"></div>
-	<div th:replace="layout :: frgHeaderSection"></div>
+	<header th:replace="layout :: frgHeader"></header>
 	<div id="content-wrapper" class="d-flex flex-column">
 		<!-- Begin Page Content -->
 		<div class="container">
@@ -27,24 +26,11 @@
 								</tr>
 							</thead>
 							<tbody>						
-								<tr th:each="pedido : ${list}" >
+								<tr th:each="receta : ${list}" >
 								
 									<td th:text="${#dates.format(receta.fecha, 'dd-MMMM-yyyy')}"></td>
 									
 									
-									<td th:if="${#authorization.expression('hasAnyRole(''ROLE_ADMIN'',''ROLE_USER'')')}">
-										<div class="row">
-											<a class="btn btn-sm btn-warning" title="Editar"
-											   th:href="@{/receta/update/} + ${receta.idreceta}">
-												<i class="far fa-edit"></i>
-											</a>
-											&nbsp;&nbsp;&nbsp;
-											<a class="btn btn-sm btn-info" title="Ver"
-											    th:href="@{/receta/retrieve/} + ${receta.idreceta}">
-												<i class="far fa-id-card"></i>
-											</a>									
-										</div>
-									</td>
 								</tr>
 							</tbody>
 						</table>

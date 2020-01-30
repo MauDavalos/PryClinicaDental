@@ -24,11 +24,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dental.app.web.models.entities.Prescripcion;
 import com.dental.app.web.models.entities.Receta;
+import com.dental.app.web.models.entities.Usuario;
 import com.dental.app.web.models.service.IRecetaService;
 import com.dental.app.web.models.service.PacienteService;
 import com.dental.app.web.models.service.DoctorService;
 
 import com.dental.app.web.models.service.PrescripcionService;
+import com.dental.app.web.models.service.UsuarioService;
 import com.dental.app.web.models.entities.Paciente;
 import com.dental.app.web.models.entities.Doctor;
 
@@ -40,6 +42,9 @@ public class RecetaController {
 	
 	@Autowired
 	private IRecetaService service; 
+	
+	@Autowired
+	private UsuarioService srvUsuario; 
 	
 	@Autowired
 	private PacienteService srvPaciente;
@@ -113,8 +118,8 @@ public class RecetaController {
 
 			Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 			UserDetails userDetail = (UserDetails) auth.getPrincipal();
-			//Usuario usuario = srvUsuario.findByUsername(userDetail.getUsername());
-			//Doctor doctor = usuario.getDoctor(); /// acorde con hernan
+			Usuario usuario = srvUsuario.findByUsername(userDetail.getUsername());
+			Doctor doctor = usuario.getDoctor(); /// acorde con hernan
 			
 			//pedido.setTotal(0f);
 			receta.setPrescripciones(prescripcion);
