@@ -6,9 +6,12 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+
 
 @Entity()
 @Table(name = "DOCTOR")
@@ -22,15 +25,23 @@ public class Doctor extends Persona implements Serializable{
 	private String especialidad;
 	
 	//////////////////////
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "IDUSUARIO")
+    private Usuario user;
 	
+	public Usuario getUser() {
+		return user;
+	}
+
+	public void setUser(Usuario user) {
+		this.user = user;
+	}
+
 	public Doctor() {
 		super();
 	}
 	
-	public Doctor(Integer id) {
-		super();
-		this.setIdpersona(id);
-	}
+	
 	
 	////////////////////////////////
 

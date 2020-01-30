@@ -11,6 +11,11 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
+import java.util.Calendar;
+import javax.persistence.PrePersist;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+
 
 
 @Entity()
@@ -25,7 +30,20 @@ public class Paciente extends Persona implements Serializable{
 	@NotEmpty
 	private String gruposanguineo;
 	
-	
+	//Bitácora
+			@Column(name="CREADOPOR")
+			@Size(max=35)
+			private String creadoPor;
+
+			@Column(name="CREADOEN")
+			private Calendar creadoEn;
+
+			@PrePersist
+		    public void prePersist() {
+		        creadoEn = Calendar.getInstance();
+		        SecurityContext context = SecurityContextHolder.getContext();
+		        creadoPor = context.getAuthentication().getName();
+		    }
 	/////////////////////////
 	public Paciente() {
 		super();
@@ -67,6 +85,20 @@ public class Paciente extends Persona implements Serializable{
 	
 	////////////////
 	
+	public String getCreadoPor() {
+		return creadoPor;
+	}
+	public void setCreadoPor(String creadoPor) {
+		this.creadoPor = creadoPor;
+	}
+	public Calendar getCreadoEn() {
+		return creadoEn;
+	}
+	public void setCreadoEn(Calendar creadoEn) {
+		this.creadoEn = creadoEn;
+	}
+
+
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Cita> citas;
 	
@@ -74,5 +106,6 @@ public class Paciente extends Persona implements Serializable{
 	private List<Tratamiento> tratamientos;
 	
 	
+
 
 }

@@ -12,16 +12,19 @@ Google Font
 <!--
 CSS
 ============================================= -->
-			<link rel="stylesheet" th:href="@{/css/linearicons.css}">
+<script src="https://kit.fontawesome.com/18ab33f66d.js" crossorigin="anonymous"></script>
+			
+ <link rel="stylesheet" th:href="@{/css/linearicons.css}">
 			<link rel="stylesheet" th:href="@{/css/font-awesome.min.css}">
 			<link rel="stylesheet" th:href="@{/css/bootstrap.css}">
+			<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 			<link rel="stylesheet" th:href="@{/css/magnific-popup.css}">
 			<link rel="stylesheet" th:href="@{/css/nice-select.css}">							
 			<link rel="stylesheet" th:href="@{/css/animate.min.css}">
 			<link rel="stylesheet" th:href="@{/css/jquery-ui.css}">			
 			<link rel="stylesheet" th:href="@{/css/owl.carousel.css}">
 			<link rel="stylesheet" th:href="@{/css/main.css}">
-
+			
 
 
 	
@@ -41,6 +44,12 @@ CSS
 									<li sec:authorize="!isAuthenticated()"><a
 										th:href="@{/login}"><i class="fas fa-sign-in-alt"></i>Iniciar
 											sesi&oacute;n</a></li>
+											
+										<li sec:authorize="!isAuthenticated()"><a
+										th:href="@{/usuario/create}"><i class="fas fa-sign-in-alt"></i>Registrarse</a></li>
+
+
+											
 
 									<li sec:authorize="isAuthenticated()"><a href="#"><i
 											class="fas fa-user"></i><span sec:authentication="name"></span></a></li>
@@ -87,11 +96,11 @@ CSS
 				        
 				      </nav><!-- #nav-menu-container -->
 			      	<div class="menu-social-icons">
-						<a href="#"><i class="fa fa-facebook"></i></a>
-						<a href="#"><i class="fa fa-telegram"></i></a>
-						<a href="#"><i class="fa fa-twitter"></i></a>
-						<a href="#"><i class="fa fa-dribbble"></i></a>
-						<a href="#"><i class="fa fa-behance"></i></a>
+						<a href="#"><i class="fab fa-facebook "></i></a>
+						<a href="#"><i class="fab fa-telegram"></i></a>
+						<a href="#"><i class="fab fa-twitter"></i></a>
+						<a href="#"><i class="fab fa-dribbble"></i></a>
+						<a href="#"><i class="fab fa-behance"></i></a>
 					</div>	    		
 			    	</div>
 			    </div>

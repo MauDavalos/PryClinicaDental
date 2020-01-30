@@ -12,35 +12,34 @@ import org.springframework.security.core.userdetails.User.UserBuilder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import com.dental.app.web.models.service.UsuarioService;
 import com.dental.app.web.security.LoginSuccessHandler;
 
 @EnableGlobalMethodSecurity(securedEnabled=true)
 @Configuration
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter{
+	
 	@Autowired //crear un objeto de esta clase dentro de la clase de arriba
 	private LoginSuccessHandler successHandler;
 	
-	@Bean
-	public BCryptPasswordEncoder passwordEncoder() {
-		
-		return new BCryptPasswordEncoder();
-		
-	}
+	@Autowired
+	private UsuarioService usuarioService;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder; 
+	
+	
 	@Autowired
 	public void configurerGlobal(AuthenticationManagerBuilder builder) throws Exception{
 		
-		PasswordEncoder encoder = passwordEncoder();
-		UserBuilder users = User.builder().passwordEncoder(password -> encoder.encode(password));
-		builder.inMemoryAuthentication()
-		.withUser(users.username("admin1").password("123").roles("ADMIN"))
-		.withUser(users.username("hernansiqui").password("123").roles("USER"))
-		.withUser(users.username("mau").password("123").roles("USER"));
+		builder.userDetailsService(usuarioService).passwordEncoder(passwordEncoder);
 	}
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-		.antMatchers("/","/css/**","/js/**","/img/**","/scss/**","/fonts/**").permitAll()
+		.antMatchers("/","/css/**","/js/**","/img/**","/scss/**","/fonts/**", "/h2-console/**").permitAll()
+		.antMatchers("/usuario/**").permitAll()
 		.antMatchers("/paciente/**").hasAnyRole("ADMIN","USER")
 		.antMatchers("/doctor/**").hasAnyRole("ADMIN")
 		.antMatchers("/insumo/**").hasAnyRole("ADMIN")
