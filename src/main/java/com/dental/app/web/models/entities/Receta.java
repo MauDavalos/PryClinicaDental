@@ -19,6 +19,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -37,7 +40,11 @@ public class Receta implements Serializable{
 	
 	@Temporal(TemporalType.DATE)
 	@Column(name="FECHA")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	@NotNull
 	private Calendar fecha;
+	
+	
 	
 	@Transient
 	private int doctorid;

@@ -57,7 +57,7 @@ public class RecetaController {
 	
 
 	
-	@GetMapping(value="/create/{id}")
+	@GetMapping(value="/create")
 	public String create(Model model) {
 		Receta receta = new Receta();
 		//receta.setDoctorid(idDoctor);
@@ -71,8 +71,8 @@ public class RecetaController {
 		
 		List<Paciente> pacientes = srvPaciente.findAll();
 		
-		List<Prescripcion> tipos = srvPrescripcion.findAll()
-				;
+		List<Prescripcion> tipos = srvPrescripcion.findAll();
+				
 		model.addAttribute("title", "Nuevo registro ");
 		model.addAttribute("receta", receta);
 		model.addAttribute("tipos", tipos);

@@ -1,173 +1,136 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout :: head"></head>
+<head th:replace="layout :: frgHead"></head>
 <body>
-<header th:replace="layout :: frgHeader"></header>
-<section class="breadcrumb_part breadcrumb_bg">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb_iner">
-                    <div class="breadcrumb_iner_item">
-                        <h2>Receta</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<div class="container pb-5">
-    <div  class="d-flex flex-column">
-        <!-- Begin Page Content -->
-        <div class="container">
-            <div class="container-fluid">
-                <br />
-                <div class="card col-md-12">
-                    <div class="card-body">
-                        <div class="form-group row">
-							<div class="col-6 ">
-								<h3 th:text="${title}"></h3>
+	<div id="wrapper">
+	<header th:replace="layout :: frgHeader"></header>	
+		<div id="content-wrapper" class="d-flex flex-column">
+			<!-- Begin Page Content -->
+			<div class="container">
+				<div class="container-fluid">			
+					<br />
+			<div class="card col-md-12">
+				<div class="card-body">
+					<div class="form-group row">
+						<div class="content col-sm-1">
+							<i class="fas fa-utensils fa-2x"></i>
+						</div>
+						<h4 class="card-title col-sm-10" th:text="${title}"></h4>					
+					</div>
+					<hr />
+					
+					<form th:action="@{/receta/save}" th:object="${receta}" method="post">
+						
+						
+						
+						
+						<!--  
+						<div class="form-group row">
+							<div class="content col-sm-3">
+								<i class="fas fa-utensils"></i>
+								<label class="h5 col-form-label">&nbsp;Usuario:</label>						
 							</div>
-							<div class="col-6 d-flex flex-row-reverse">
-								<div class="form-group px-2">
-									<a class="genric-btn btn-sm success circle"  data-toggle="modal" data-target="#addModal">
-										<i class="ti-plus"></i>&nbsp; Anadir Prescripcion</a>
-								</div>
-
+							<div class="content col-sm-6">
+							<select class="nice-select wide form-control" th:field="*{cliente}">
+									<option value="0">-- Seleccione --</option>
+									<option th:each="cli : ${clientes}" th:value="${cli}"
+										th:text="${cli.nombres}"
+										th:selected="${cliente == cli}"></option>
+								</select>											
 							</div>
-                        </div>
-
-                        <hr />
-
-                        <form th:action="@{/receta/save}" th:object="${recetas}" method="post">
-							<div class="form-group row">
-								<div class="content col-sm-3">
-									<i class="ti-calendar"></i>
-									<label class="h5 col-form-label">&nbsp;Fecha:</label>
-								</div>
-								<div class="col-sm-6">
-									<input class="form-control"  type="date" required
-										   th:field="*{date}"
-										   th:errorclass="'form-control is-invalid'">
-									<small
-											class="invalid-feedback"
-											th:if="${#fields.hasErrors('date')}"
-											th:errors="*{date}"></small>
-								</div>
-								
-							</div>
-							<div class="card col-md-12 ">
-								<div class="card-body">
-									<table id="tblDetalle" class="table table-hover">
-										<thead>
-										<tr>
-											<th class="align-middle text-center"><i class="ti-text"></i>&nbsp;Nombre Generico</th>
-											<th class="align-middle text-center"><i class="ti-text"></i>&nbsp;Nombre Comercial</th>
-											<th class="align-middle text-center"><i class="ti-money"></i>&nbsp;Componente Activo</th>
-											<th class="align-middle text-center"><i class="ti-money"></i>&nbsp;Dosis</th>
-											<th class="align-middle text-center"><i class="ti-money"></i>&nbsp;Indicaciones</th>
-
-										</tr>
-										</thead>
-										<tbody>
-
-										</tbody>
-									</table>
-								</div>
-							</div>
-							<input type="hidden" th:field="*{idreceta}" />
+						</div>
+							-->
+							<br><a></a>
 							
-							<div class="col-12 d-flex flex-row-reverse m-4">
-								<a class="genric-btn  danger circle"
-								   th:href="@{/receta/list}">
-									<i class="ti-close"></i>&nbsp; Cancelar</a>
-								<button class="genric-btn success circle" type="submit">
-									<i class="ti-save"></i>&nbsp; Guardar
-								</button>
+						<div class="input-group-icon mt-10">
+										<div class="icon">
+											<i class="fas fa-info-circle" aria-hidden="true"></i>
+										</div>
+										<input th:field="*{fecha}" placeholder="Fecha" 
+											class="single-input" type="date"											
+											th:errorclass="'form-control is-invalid'">
+										 <small
+											class="invalid-feedback"
+											th:if="${#fields.hasErrors('fecha')}"
+											th:errors="*{fecha}"></small>
+									</div>
+									
+										
+						<br>
+						<br><a></a>
+						<table id="tblAgregarDetalle">
+							<thead>
+								<tr>
+									<td>Nombre generico</td>
+									<td>Nombre comercial</td>
+									<td>Componente Activo</td>
+									<td>Dosis</td>
+									<td>Indicaciones</td>
+									<td></td>
+								</tr>
+							</thead>				
+							<tbody>
+								<tr>
+									<td>
+											<input  name="txtnombreGenerico" id="txtnombreGenerico" type="text" class="single-input form-control" />							
+									</td>																						
+																																		
+									<td>
+											<input  name="txtnombreComercial" id="txtnombreComercial" type="text" class="single-input form-control" />										
+									</td>
+									<td>
+											<input  name="txtcomponenteActivo" id="txtcomponenteActivo" type="text" class="single-input form-control" />										
+									</td>
+									<td>
+											<input  name="txtdosis" id="txtdosis" type="text" class="single-input form-control" />										
+									</td>
+									<td>
+											<input  name="txtindicaciones" id="txtindicaciones" type="text" class="single-input form-control" />										
+									</td>
+									<td>
+									<button type="button" id="btnAgregar" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
+									</td>
+								</tr>										
+							</tbody>				
+						</table>
+						<br>
+						<table class="table ">	
+						<thead>
+							<tr>
+								<td>Nombre generico</td>
+									<td>Nombre comercial</td>
+									<td>Componente Activo</td>
+									<td>Dosis</td>
+									<td>Indicaciones</td>
+									<td></td>
+							</tr>
+						</thead>		
+						<tbody id="tblDetalle">
+						</tbody>								
+						</table>
+						
+						<div class="form-group row">
+							<div class="col-sm-4">
+								<a class="btn btn-danger" th:href="@{/receta/list}">Cancelar</a>
+								<input type="submit" class="btn btn-success" value="Ingresar" />
 							</div>
-		                            
-						</form>
-
-
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
-
-<div id="addModal" class="modal" tabindex="-1" role="dialog">
-	<div class="modal-dialog modal-dialog-centered" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title">Anadir detalle</h5>
-				<button type="button" class="close" data-dismiss="modal"
-						aria-label="Cerrar">
-					<span aria-hidden="true">&times;</span>
-				</button>
+						</div>
+	
+						<input type="hidden" th:field="*{idreceta}" />
+										
+					</form>
+				</div>
 			</div>
-			<div class="modal-body">
-					
-					<div class="form-group row">
-						<div class="content col-sm-3">
-							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Nombre Generico:</label>
-						</div>
-						<div class="content col-sm-6">
-							<input id="txbnombreGenerico" class="form-control" type="text" required />
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="content col-sm-3">
-							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Nombre Comercial:</label>
-						</div>
-						<div class="content col-sm-6">
-							<input id="txbnombreComercial" class="form-control" type="text" required />
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="content col-sm-3">
-							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Componente Activo:</label>
-						</div>
-						<div class="content col-sm-6">
-							<input id="txbcomponenteActivo" class="form-control" type="text" required />
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="content col-sm-3">
-							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Dosis:</label>
-						</div>
-						<div class="content col-sm-6">
-							<input id="txbdosis" class="form-control" type="text" required />
-						</div>
-					</div>
-					
-					<div class="form-group row">
-						<div class="content col-sm-3">
-							<i class="fas fa-info-circle"></i>
-							<label class="h5 col-form-label">&nbsp;Indicaciones:</label>
-						</div>
-						<div class="content col-sm-6">
-							<input id="txbindicaciones" class="form-control" type="text" required />
-						</div>
-					</div>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-				<a id="btnAdd" class="btn btn-success" data-dismiss="modal">Confirmar</a>
+				</div>
+				<br />
+				<br />
+				<footer th:replace="layout :: frgFooter"></footer>
 			</div>
 		</div>
 	</div>
-</div>
-<footer th:replace="layout :: frgFooter"></footer>
-<script th:src="@{/js/AjaxFunctions/AddPrescripcion.js}"></script>
+	
+	<script th:src="@{/js/receta-detail.js}"></script>
+
+	
 </body>
 </html>
