@@ -1,22 +1,22 @@
 package com.dental.app.web.reporting;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 
-public class LlaveValor implements Serializable{
+public class LlaveValor2 implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
 	private String llave;
 
-	private BigInteger valor;
+	private Double valor;
 
-	public LlaveValor() {		
+	public LlaveValor2() {		
 	}
 
 
 
-	public LlaveValor(String llave, BigInteger valor) {
+	public LlaveValor2(String llave, Double valor) {
 		super();
 		this.llave = llave;
 		this.valor = valor;
@@ -32,11 +32,11 @@ public class LlaveValor implements Serializable{
 		this.llave = llave;
 	}
 
-	public BigInteger getValor() {
+	public Double  getValor() {
 		return valor;
 	}
 
-	public void setValor(BigInteger valor) {
+	public void setValor(Double  valor) {
 		this.valor = valor;
 	}
 
