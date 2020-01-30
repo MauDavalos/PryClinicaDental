@@ -3,6 +3,8 @@ package com.dental.app.web.models.service;
 import java.util.List;
 
 import com.dental.app.web.models.entities.Insumo;
+import com.dental.app.web.reporting.LlaveValor;
+import com.dental.app.web.reporting.LlaveValor2;
 
 public interface IInsumoService {
 	
@@ -14,4 +16,5 @@ public interface IInsumoService {
 	
 	public List<Insumo> findAll();
 
+	public List<LlaveValor2> ContarInsumo();
 }
