@@ -12,10 +12,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dental.app.web.models.entities.Insumo;
 import com.dental.app.web.models.service.IInsumoService;
+import com.dental.app.web.reporting.LlaveValor;
+import com.dental.app.web.reporting.LlaveValor2;
 
 @Controller
 @RequestMapping(value="/insumo")
@@ -109,6 +112,18 @@ public class InsumoController {
 		}
 		
 		return "redirect:/insumo/list";
+	}
+	
+	@GetMapping(value = "/report")
+	public String report(Model model) {		
+		model.addAttribute("title", "Consumo de Insumos");
+		return "/insumo/report";
+	}
+
+	@GetMapping(value = "/loadData", produces="application/json")
+	public @ResponseBody List<LlaveValor2> loadData() {	
+		List<LlaveValor2> lista = service.ContarInsumo();
+		return lista;
 	}
 
 }

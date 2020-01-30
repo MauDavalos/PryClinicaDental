@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.dental.app.web.models.entities.Cita;
 import com.dental.app.web.models.service.ICitaService;
+import com.dental.app.web.reporting.LlaveValor;
 
 
 @Controller
@@ -95,6 +97,17 @@ public class CitaController {
 		}
 		
 		return "redirect:/cita/list";
+	}
+	@GetMapping(value = "/report2")
+	public String report(Model model) {		
+		model.addAttribute("title", "Rango de Edades");
+		return "/cita/report2";
+	}
+
+	@GetMapping(value = "/loadData", produces="application/json")
+	public @ResponseBody List<LlaveValor> loadData() {	
+		List<LlaveValor> lista = service.ContarRango();
+		return lista;
 	}
 
 }
