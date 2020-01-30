@@ -62,9 +62,9 @@ public class Prescripcion implements Serializable{
 	}
 	//////////////
 	
-	@JoinColumn(name= "IDCITA", referencedColumnName = "IDCITA")
+	/*@JoinColumn(name= "IDRECETA", referencedColumnName = "IDRECETA")
 	@ManyToOne
-	private Cita cita;
+	private Receta receta;*/
 	
 	/////////////////////
 
@@ -118,13 +118,7 @@ public class Prescripcion implements Serializable{
 		this.indicaciones = indicaciones;
 	}
 
-	public Cita getCita() {
-		return cita;
-	}
-
-	public void setCita(Cita cita) {
-		this.cita = cita;
-	}
+	
 	
 	
 	

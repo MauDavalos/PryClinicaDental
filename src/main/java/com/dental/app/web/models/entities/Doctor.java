@@ -72,8 +72,20 @@ public class Doctor extends Persona implements Serializable{
 	
 	/////////////////
 	
+	public List<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(List<Receta> recetas) {
+		this.recetas = recetas;
+	}
+
+
 	@OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
 	private List<Cita> citas;
+	
+	@OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
+	private List<Receta> recetas;
 	
 	@OneToMany(mappedBy = "doctor", fetch = FetchType.LAZY)
 	private List<Tratamiento> tratamientos;

@@ -103,6 +103,18 @@ public class Paciente extends Persona implements Serializable{
 	private List<Cita> citas;
 	
 	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
+	private List<Receta> recetas;
+	
+	public List<Receta> getRecetas() {
+		return recetas;
+	}
+
+	public void setRecetas(List<Receta> recetas) {
+		this.recetas = recetas;
+	}
+
+
+	@OneToMany(mappedBy = "paciente", fetch = FetchType.LAZY)
 	private List<Tratamiento> tratamientos;
 	
 	

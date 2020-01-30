@@ -140,13 +140,7 @@ public class Cita implements Serializable{
 		this.insumos = insumos;
 	}
 
-	public List<Prescripcion> getPrescripcion() {
-		return prescripcion;
-	}
-
-	public void setPrescripcion(List<Prescripcion> prescripcion) {
-		this.prescripcion = prescripcion;
-	}
+	
 
 
 	/////////////////////////////
@@ -165,8 +159,7 @@ public class Cita implements Serializable{
 	@OneToMany(mappedBy = "cita", fetch = FetchType.LAZY)
 	private List<Insumo> insumos;
 	
-	@OneToMany(mappedBy = "cita", fetch = FetchType.LAZY)
-	private List<Prescripcion> prescripcion;
+	
 	
 
 }
