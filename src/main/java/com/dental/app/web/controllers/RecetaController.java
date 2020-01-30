@@ -113,6 +113,7 @@ public class RecetaController {
 		
 		try {
 			if(result.hasErrors()) {
+				System.out.println("--------------> Errores: " + result.getAllErrors().get(0).getDefaultMessage());
 				return "receta/form";
 			}
 
@@ -121,13 +122,17 @@ public class RecetaController {
 			Usuario usuario = srvUsuario.findByUsername(userDetail.getUsername());
 			Doctor doctor = usuario.getDoctor(); /// acorde con hernan
 			
-			//pedido.setTotal(0f);
-			receta.setPrescripciones(prescripcion);
+			//Paciente p = srvPaciente.findById(receta.getPaciente().getIdpersona());
 			
+			System.out.println("--------------> Doctor: " + usuario.getNombre());
+			
+			receta.setPrescripciones(prescripcion);
+			receta.setDoctor(doctor);
 			service.save(receta);
 			session.setComplete();
 		}catch(Exception ex) {
 			//flash.addFlashAttribute("error", "No se pudo guardar");
+			System.out.println("--------------> Excepcion: " + ex.getMessage());
 		}
 		return "redirect:/receta/list";
 	}

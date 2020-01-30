@@ -21,26 +21,21 @@
 					
 					<form th:action="@{/receta/save}" th:object="${receta}" method="post">
 						
-						
-						
-						
-						<!--  
 						<div class="form-group row">
 							<div class="content col-sm-3">
 								<i class="fas fa-utensils"></i>
-								<label class="h5 col-form-label">&nbsp;Usuario:</label>						
+								<label class="h5 col-form-label">&nbsp;Paciente:</label>						
 							</div>
 							<div class="content col-sm-6">
-							<select class="nice-select wide form-control" th:field="*{cliente}">
-									<option value="0">-- Seleccione --</option>
-									<option th:each="cli : ${clientes}" th:value="${cli}"
-										th:text="${cli.nombres}"
-										th:selected="${cliente == cli}"></option>
-								</select>											
+							<select class="form-control" th:field="*{paciente.idpersona}">
+								<option value=0>--Seleccione--</option>
+								<option th:each="p : ${pacientes}" 
+								th:value="${p.idpersona}"
+								th:text="${p.nombres}"
+								th:selected="${receta.paciente.idpersona == p.idpersona}"></option>
+							</select>
 							</div>
 						</div>
-							-->
-							<br><a></a>
 							
 						<div class="input-group-icon mt-10">
 										<div class="icon">
@@ -117,6 +112,7 @@
 						</div>
 	
 						<input type="hidden" th:field="*{idreceta}" />
+						
 										
 					</form>
 				</div>
