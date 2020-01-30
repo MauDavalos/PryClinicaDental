@@ -96,6 +96,9 @@ public class DoctorController {
 			u.setNombre(doctor.getUser().getNombre());
 			u.setContrasenia(passwordEncoder.encode(doctor.getUser().getContrasenia()));
 			u.getRoles().add(new Rol("ROLE_USER"));
+			System.out.println("*************** " + u.getNombre() + " **************");
+			System.out.println("*************** " + u.getContrasenia() + " **************");
+			System.out.println("*************** " + u.getRoles().get(0).getNombre() + " **************");
 			srvUser.save(u);
 			
 			System.out.println("*************** ID DE USUARIO: " + u.getIdusuario() + " **************");
