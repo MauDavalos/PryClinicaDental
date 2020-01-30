@@ -44,7 +44,7 @@ public class UsuarioController {
 		try {
 			if(result.hasErrors())
 			{
-				if(usuario.getIdpersona() == null) {
+				if(usuario.getDoctor().getIdpersona() == null) {
 					model.addAttribute("title","Nuevo registro");					
 				}
 				else {
