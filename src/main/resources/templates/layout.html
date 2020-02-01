@@ -80,6 +80,10 @@ CSS
 				          <li><a th:href="@{/prescripcion/list}">Prescripci&oacute;n</a></li>
 				          <li><a th:href="@{/insumo/list}">Insumo</a></li>
 				          <li><a th:href="@{/receta/list}">Receta</a></li>
+				          <li><a th:href="@{/cita/report}">Citas por m&eacute;dico</a></li>
+				          <li><a th:href="@{/insumo/report}">Insumos por mes</a></li>
+				          			          
+				          
 				          <li class="menu-has-children"><a href="">Blog</a>
 				            <ul>
 				              <li><a href="blog-home.html">Blog Home</a></li>
@@ -186,6 +190,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script th:src="@{/js/jquery.nice-select.min.js}"></script>							
 			<script th:src="@{/js/mail-script.js}"></script>	
 			<script th:src="@{/js/main.js}"></script>	
+			<script th:src="@{/js/Chart.min.js}"></script>
 				<script th:src="@{/js/layout.js}"></script>
 			<div class="container">
 			<div class="row">
@@ -230,6 +235,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 					</div>
 
 					<div id="info-alert" th:if="${info != null}">
+					
 						<script th:inline="javascript">
 							/*<![CDATA[*/
 

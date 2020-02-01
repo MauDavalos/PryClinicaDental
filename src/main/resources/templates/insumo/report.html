@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout :: frgHead"></head>
+<body>
+	<header th:replace="layout :: frgHeader"></header>
+<br><br><br><br>
+	<div class="whole-wrap">
+		<div class="container box_1170">
+			<div class="section-top-border">
+				<div class="welcome_docmed_area">
+					<div class="row">
+						<div class="col-xl-20 col-lg-20">
+							<div class="welcome_thumb">
+								
+							</div>
+						</div>
+						<div class="col-xl-10 col-lg-10">
+							<div class="welcome_docmed_info">
+							
+							<div class="d-flex justify-content-center"><h2 th:text="${title}"></h2></div>
+															
+
+
+								<div class="container">
+									<div id="canvas-holder">
+										<canvas id="chart-area"></canvas>
+									</div>					
+								</div>			
+
+
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout :: frgFooter"></footer>
+	<script th:src="@{/js/insumo-report.js}"></script>
+
+</body>
+</html> 

@@ -3,6 +3,7 @@ package com.dental.app.web.models.service;
 import java.util.List;
 
 import com.dental.app.web.models.entities.Cita;
+import com.dental.app.web.reporting.LlaveValor;
 
 
 public interface ICitaService {
@@ -13,5 +14,8 @@ public interface ICitaService {
 	public void delete(Integer id);
 	
 	public List<Cita> findAll();
+	
+	public List<LlaveValor> CitasporDoctor();
+	
 
 }
